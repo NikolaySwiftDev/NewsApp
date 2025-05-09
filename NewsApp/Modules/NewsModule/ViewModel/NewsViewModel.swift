@@ -24,9 +24,13 @@ final class NewsViewModel: ObservableObject {
                 news = article.articles
             } catch {
                 if let error = error as? NetworkError {
-                    print(error)
+                    print(error.rawValue)
                 }
             }
         }
+    }
+    
+    private func fetchImages() {
+        
     }
 }
