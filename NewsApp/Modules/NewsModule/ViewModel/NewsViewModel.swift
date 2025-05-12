@@ -11,16 +11,19 @@ import Foundation
 final class NewsViewModel: ObservableObject {
     
     @Published var news: [Article] = []
+    @Published var bottomNews: [BottomArticle] = []
+    
     private let networkManager = NetworkManager()
     
     init() {
-        fetchNews()
+        fetchTopNews()
+        fetchBottomNews()
     }
     
-    private func fetchNews() {
+    func fetchTopNews() {
         Task {
             do {
-                let article = try await networkManager.fetchNews()
+                let article = try await networkManager.fetchTopNews()
                 news = article.articles
             } catch {
                 if let error = error as? NetworkError {
@@ -30,7 +33,16 @@ final class NewsViewModel: ObservableObject {
         }
     }
     
-    private func fetchImages() {
-        
+    func fetchBottomNews() {
+        Task {
+            do {
+                let article = try await networkManager.fetchTBottomNews()
+                bottomNews = article.articles
+            } catch {
+                if let error = error as? NetworkError {
+                    print(error.rawValue)
+                }
+            }
+        }
     }
 }

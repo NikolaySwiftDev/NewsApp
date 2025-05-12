@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import Foundation
 
-struct News: Decodable {
+struct TopNews: Decodable {
     let status: String
     let totalResults: Int
     let articles: [Article]
@@ -24,9 +23,25 @@ struct Article: Decodable {
     let content: String
 }
 
+struct BottomNews: Decodable {
+    let status: String
+    let totalResults: Int
+    let articles: [BottomArticle]
+}
+
+struct BottomArticle: Codable {
+    let author: String?
+    let title: String
+    let description: String?
+    let url: String
+    let urlToImage: String?
+    let publishedAt: Date
+    let content: String?
+}
 
 enum NetworkError: String, Error {
     case invalidURL = "Invalid URL"
     case invalidResponce = "Invalid Responce"
     case invalidData = "Invalid Data"
 }
+
