@@ -1,15 +1,12 @@
-//
-//  NewBottomCell.swift
-//  NewsApp
-//
-//  Created by Николай on 12.05.2025.
-//
 
 import SwiftUI
 
-struct NewBottomCell: View {
-    let article: BottomArticle
+struct NewSupportCell: View {
     
+    //MARK: - Properties
+    let article: SupprotArticle
+    
+    //MARK: - Body
     var body : some View {
         VStack {
             if let urlImage = article.urlToImage,

@@ -1,16 +1,11 @@
-//
-//  DatailView.swift
-//  NewsApp
-//
-//  Created by Николай on 12.05.2025.
-//
-
-import Foundation
 
 import SwiftUI
 
 struct DetailView: View {
+    //MARK: - Properties
     let model: DetailModel
+    
+    //MARK: - Body
     var body : some View {
         ZStack(alignment: .topLeading) {
             ScrollView(.vertical, showsIndicators: false) {
@@ -44,6 +39,7 @@ struct DetailView: View {
     }
 }
 
+//MARK: - Preview
 #Preview {
     DetailView(model: DetailModel(title: "Mock",
                                   descr: "Mock",

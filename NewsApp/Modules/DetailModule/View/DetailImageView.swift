@@ -1,15 +1,11 @@
-//
-//  DetailImageView.swift
-//  NewsApp
-//
-//  Created by Николай on 12.05.2025.
-//
 
 import SwiftUI
 
 struct DetailImageView: View {
+    //MARK: - Properties
     let model: DetailModel
     
+    //MARK: - Body
     var body: some View {
         GeometryReader { geometry in
             if let urlImage = model.urlToImage,
@@ -29,14 +25,4 @@ struct DetailImageView: View {
     }
 }
 
-struct GradientDetailImageView: View {
-    var body: some View {
-        GeometryReader { _ in
-            LinearGradient(colors: [Color(UIColor.systemBackground), .clear],
-                           startPoint: .bottom,
-                           endPoint: .top)
-            .frame(height: SizeConstant.heigh / 4)
-            .offset(y: -SizeConstant.heigh / 4)
-        }
-    }
-}
+

@@ -1,16 +1,14 @@
-//
-//  BackNavigationButton.swift
-//  NewsApp
-//
-//  Created by Николай on 12.05.2025.
-//
+
 
 import Foundation
 import SwiftUI
 
 struct BackNavigationButton: View {
+    
+    //MARK: - Properties
     @Environment(\.dismiss) var dismiss
     
+    //MARK: - Body
     var body : some View {
         Button {
             dismiss()
@@ -31,6 +29,7 @@ struct BackNavigationButton: View {
     }
 }
 
+//MARK: - Preview
 #Preview {
     BackNavigationButton()
 }

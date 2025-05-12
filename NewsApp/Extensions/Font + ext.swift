@@ -1,13 +1,6 @@
-//
-//  Font + ext.swift
-//  NewsApp
-//
-//  Created by Николай on 09.05.2025.
-//
 
 import Foundation
 import SwiftUICore
-
 
 extension Text {
     

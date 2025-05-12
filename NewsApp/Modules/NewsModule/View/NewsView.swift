@@ -1,16 +1,12 @@
-//
-//  ContentView.swift
-//  NewsApp
-//
-//  Created by Николай on 08.05.2025.
-//
 
 import SwiftUI
 
 struct NewsView: View {
     
+    //MARK: - Propertise
     @StateObject var vm = NewsViewModel()
     
+    //MARK: - Body
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
@@ -40,14 +36,14 @@ struct NewsView: View {
                 }
                 .padding(10)
                 .shadow(radius: 10)
-                Text("BOTTOM NEWS")
+                Text("SUPPORT NEWS")
                     .font(.title)
                     .fontWeight(.heavy)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding([.leading, .top],20)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 20) {
-                        ForEach(vm.bottomNews, id: \.url) { article in
+                        ForEach(vm.supportNews, id: \.url) { article in
                             NavigationLink {
                                 let model = DetailModel(title: article.title,
                                                         descr: article.description,
@@ -57,7 +53,7 @@ struct NewsView: View {
 
                                 DetailView(model: model)
                             } label: {
-                                NewBottomCell(article: article)
+                                NewSupportCell(article: article)
                             }
                             .buttonStyle(.plain)
                         }
@@ -69,12 +65,13 @@ struct NewsView: View {
             .background(.secondary.opacity(0.2))
             .refreshable {
                 vm.fetchTopNews()
-                vm.fetchBottomNews()
+                vm.fetchSupprotNews()
             }
         }
     }
 }
 
+//MARK: - Preview
 #Preview {
     NewsView()
 }

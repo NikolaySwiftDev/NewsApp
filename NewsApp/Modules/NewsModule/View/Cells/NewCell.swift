@@ -1,14 +1,11 @@
-//
-//  NewCell.swift
-//  NewsApp
-//
-//  Created by Николай on 12.05.2025.
-//
+
 import SwiftUI
 
 struct NewCell: View {
+    //MARK: - Properties
     let article: Article
     
+    //MARK: - Body
     var body : some View {
         VStack {
             if let urlImage = article.urlToImage,
