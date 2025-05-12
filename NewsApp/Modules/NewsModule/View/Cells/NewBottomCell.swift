@@ -49,6 +49,10 @@ struct NewBottomCell: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
+        .frame(width: 120, height: 240)
+        .padding(10)
+        .background(.background)
+        .cornerRadius(10)
     }
 }
 

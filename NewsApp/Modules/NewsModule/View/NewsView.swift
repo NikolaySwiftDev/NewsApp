@@ -23,14 +23,17 @@ struct NewsView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 20) {
                         ForEach(vm.news, id: \.url) { article in
-                            NewCell(article: article)
-                                .frame(width: 250, height: 250)
-                                .padding(10)
-                                .background(.white)
-                                .cornerRadius(10)
-                                .onTapGesture {
-                                    print(article.urlToImage as Any)
-                                }
+                            NavigationLink {
+                                let model = DetailModel(title: article.title,
+                                                        descr: article.articleDescription,
+                                                        author: article.author,
+                                                        date: article.publishedAt,
+                                                        urlToImage: article.urlToImage)
+                                DetailView(model: model)
+                            } label: {
+                                NewCell(article: article)
+                            }
+                            .buttonStyle(.plain)
                         }
                     }
                     
@@ -45,14 +48,18 @@ struct NewsView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 20) {
                         ForEach(vm.bottomNews, id: \.url) { article in
-                            NewBottomCell(article: article)
-                                .frame(width: 120, height: 240)
-                                .padding(10)
-                                .background(.background)
-                                .cornerRadius(10)
-                                .onTapGesture {
-                                    print(article.urlToImage as Any)
-                                }
+                            NavigationLink {
+                                let model = DetailModel(title: article.title,
+                                                        descr: article.description,
+                                                        author: article.author,
+                                                        date: article.publishedAt,
+                                                        urlToImage: article.urlToImage)
+
+                                DetailView(model: model)
+                            } label: {
+                                NewBottomCell(article: article)
+                            }
+                            .buttonStyle(.plain)
                         }
                     }
                 }
