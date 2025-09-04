@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct DetailModel {
+struct DetailModel: Hashable {
     let title: String
     let descr: String?
     let author: String?

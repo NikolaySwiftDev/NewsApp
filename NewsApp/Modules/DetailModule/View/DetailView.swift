@@ -3,24 +3,24 @@ import SwiftUI
 
 struct DetailView: View {
     //MARK: - Properties
-    let model: DetailModel
+    @StateObject var vm: DetailViewModel
     
     //MARK: - Body
     var body : some View {
         ZStack(alignment: .topLeading) {
             ScrollView(.vertical, showsIndicators: false) {
                 
-                DetailImageView(model: model)
+                DetailImageView(model: vm.model)
                 VStack(alignment: .leading, spacing: 20) {
-                    Text(model.title)
+                    Text(vm.model.title)
                         .titleFont(size: 20)
-                    Text(model.descr ?? "")
+                    Text(vm.model.descr ?? "")
                         .descrFont()
                     HStack {
-                        Text(model.author ?? "")
+                        Text(vm.model.author ?? "")
                             .descrFont()
                         Spacer()
-                        Text(model.date.convertData())
+                        Text(vm.model.date.convertData())
                             .descrFont()
                     }
                 }
@@ -33,7 +33,9 @@ struct DetailView: View {
             .navigationBarHidden(true)
             .ignoresSafeArea()
             
-            BackNavigationButton()
+            BackNavigationButton() {
+                vm.popVC()
+            }
                 .padding(.leading, 10)
         }
     }
@@ -41,11 +43,11 @@ struct DetailView: View {
 
 //MARK: - Preview
 #Preview {
-    DetailView(model: DetailModel(title: "Mock",
-                                  descr: "Mock",
-                                  author: "Mock",
-                                  date: Date(),
-                                  urlToImage: "https://picsum.dev/300/200"))
+    DetailView(vm: DetailViewModel(navigator: Router(), model: DetailModel(title: "Mock",
+                                                                           descr: "Mock",
+                                                                           author: "Mock",
+                                                                           date: Date(),
+                                                                           urlToImage: "https://picsum.dev/300/200")))
 }
 
 

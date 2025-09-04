@@ -1,5 +1,6 @@
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct NewSupportCell: View {
     
@@ -11,9 +12,8 @@ struct NewSupportCell: View {
         VStack {
             if let urlImage = article.urlToImage,
                let imageUrl = URL(string: urlImage) {
-                AsyncImage(url: imageUrl) { phase in
-                    if let image = phase.image {
-                        image
+                WebImage(url: imageUrl)
+                        
                             .resizable()
                             .scaledToFill()
                             .frame(width: 120, height: 120)
@@ -32,8 +32,8 @@ struct NewSupportCell: View {
                                 .foregroundStyle(.secondary)
                                 .scaledToFit()
                                 .frame(height: 50)
-                        }
-                    }
+//                        }
+//                    }
                 }
             }
             

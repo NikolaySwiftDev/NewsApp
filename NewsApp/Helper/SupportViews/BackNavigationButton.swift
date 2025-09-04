@@ -6,7 +6,8 @@ import SwiftUI
 struct BackNavigationButton: View {
     
     //MARK: - Properties
-    @Environment(\.dismiss) var dismiss
+    @State var dismiss: () -> () = { }
+
     
     //MARK: - Body
     var body : some View {

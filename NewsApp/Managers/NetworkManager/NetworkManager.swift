@@ -1,11 +1,16 @@
 
 import Foundation
 
-final class NetworkManager {
+protocol NetworkManagerProtocol: AnyObject {
+    func fetchTopNews() async throws -> TopNews
+    func fetchSupportNews() async throws -> SupportNews
+}
+
+final class NetworkManager: NetworkManagerProtocol {
         
     //MARK: - Properties
     private let apiKey = "b123af3bd3ce43f8b3a168dd82e32a6a"
-    private let urlTopNews = "https://newsapi.org/v2/everything?q=tesla&from=2025-04-12&sortBy=publishedAt&apiKey=b123af3bd3ce43f8b3a168dd82e32a6a"
+    private let urlTopNews = "https://newsapi.org/v2/everything?q=tesla&from=2025-09-02&sortBy=publishedAt&apiKey=b123af3bd3ce43f8b3a168dd82e32a6a"
     private let urlSupportNews = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=b123af3bd3ce43f8b3a168dd82e32a6a"
     private let decoder = JSONDecoder()
     
@@ -38,5 +43,9 @@ final class NetworkManager {
         } catch {
             throw NetworkError.invalidData
         }
+    }
+    
+    deinit {
+        print("Deinit Network")
     }
 }
