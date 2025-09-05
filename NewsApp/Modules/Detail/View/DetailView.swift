@@ -20,7 +20,7 @@ struct DetailView: View {
                         Text(vm.model.author ?? "")
                             .descrFont()
                         Spacer()
-                        Text(vm.model.date.convertData())
+                        Text(vm.model.date)
                             .descrFont()
                     }
                 }
@@ -46,7 +46,7 @@ struct DetailView: View {
     DetailView(vm: DetailViewModel(navigator: Router(), model: DetailModel(title: "Mock",
                                                                            descr: "Mock",
                                                                            author: "Mock",
-                                                                           date: Date(),
+                                                                           date: "Date()",
                                                                            urlToImage: "https://picsum.dev/300/200")))
 }
 

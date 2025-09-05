@@ -13,11 +13,7 @@ struct DetailImageView: View {
                let imageUrl = URL(string: urlImage) {
                 WebImage(url: imageUrl)
                             .resizable()
-//                            .aspectRatio(contentMode: .fit)
-//                            .offset(y: -geometry.frame(in: .global).minY)
                             .frame(width: SizeConstant.width, height: SizeConstant.heigh)
-//                    }
-//                }
             }
         }
         .frame(height: SizeConstant.heigh)

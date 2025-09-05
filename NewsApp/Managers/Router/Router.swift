@@ -3,8 +3,8 @@ import SwiftUI
 
 
 enum AppRoute: Hashable {
-    case items
-    case itemDetail(model: DetailModel)
+    case news(category: NewsCategory)
+    case newsDetail(model: DetailModel)
 }
 
 enum SheetRoute: Hashable {
@@ -42,16 +42,20 @@ struct RoutingView: View {
     
     var body: some View {
         NavigationStack(path: $router.path) {
-            NewsView(vm: NewsViewModel(networkManager: networkManager, navigator: router))
+            MenuView(navigator: router)
+                
                 .navigationDestination(for: AppRoute.self) { route in
                     switch route {
-                    case .items:
-                        Text("Items list")
-                    case .itemDetail(let model):
+                    case .news(category: let category):
+                        NewsView(vm: NewsViewModel(category: category, networkManager: networkManager, navigator: router))
+                            .navigationBarHidden(true)
+                    case .newsDetail(let model):
                         DetailView(vm: DetailViewModel(navigator: router, model: model))
+         
                     }
                 }
         }
+        
     }
 }
 

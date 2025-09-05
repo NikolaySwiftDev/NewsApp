@@ -8,4 +8,3 @@ enum NetworkError: String, Error {
     case invalidData = "Invalid Data"
     case imageLoadingFailed = "Image Loading Failed"
 }
-
