@@ -9,9 +9,8 @@ struct DetailImageView: View {
     //MARK: - Body
     var body: some View {
         GeometryReader { geometry in
-            if let urlImage = model.urlToImage,
-               let imageUrl = URL(string: urlImage) {
-                WebImage(url: imageUrl)
+            if let urlImage = model.image {
+                Image(uiImage: urlImage)
                             .resizable()
                             .frame(width: SizeConstant.width, height: SizeConstant.heigh)
             }

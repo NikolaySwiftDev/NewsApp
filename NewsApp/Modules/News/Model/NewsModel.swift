@@ -1,7 +1,6 @@
 
 import Foundation
 
-
 struct NewsModel {
     let author: String?
     let title: String
@@ -11,4 +10,5 @@ struct NewsModel {
     let publishedAt: Date
     let content: String
 }
+
 

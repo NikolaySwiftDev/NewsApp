@@ -20,7 +20,7 @@ struct DetailView: View {
                         Text(vm.model.author ?? "")
                             .descrFont()
                         Spacer()
-                        Text(vm.model.date)
+                        Text(vm.model.date.convertData())
                             .descrFont()
                     }
                 }
@@ -42,12 +42,12 @@ struct DetailView: View {
 }
 
 //MARK: - Preview
-#Preview {
-    DetailView(vm: DetailViewModel(navigator: Router(), model: DetailModel(title: "Mock",
-                                                                           descr: "Mock",
-                                                                           author: "Mock",
-                                                                           date: "Date()",
-                                                                           urlToImage: "https://picsum.dev/300/200")))
-}
+//#Preview {
+//    DetailView(vm: DetailViewModel(navigator: Router(), model: DetailModel(title: "Mock",
+//                                                                           descr: "Mock",
+//                                                                           author: "Mock",
+//                                                                           date: "Date()",
+//                                                                           urlToImage: "https://picsum.dev/300/200")))
+//}
 
 

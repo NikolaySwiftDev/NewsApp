@@ -41,7 +41,7 @@ final class NewsViewModel: NewsViewModelProtocol {
         Task {
             do {
                 let article = try await networkManager.fetchNewsByCategory(category)
-                news = article.articles
+                news = article
             } catch {
                 if let error = error as? NetworkError {
                     self.error = error
@@ -59,7 +59,8 @@ final class NewsViewModel: NewsViewModelProtocol {
             descr: article.description,
             author: article.author,
             date: article.publishedAt,
-            urlToImage: article.urlToImage
+            image: article.image
+            
         )
         navigator.push(.newsDetail(model: model))
     }

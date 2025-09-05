@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 // Модели данных
 struct NewsResponse: Codable {
@@ -15,13 +16,23 @@ struct Article: Codable, Identifiable {
     let description: String?
     let url: String
     let urlToImage: String?
-    let publishedAt: String
+    let publishedAt: Date
     let content: String?
+    var image: UIImage? = nil
+    
+    var cacheCost: Int {
+        var cost = title.utf8.count + (description?.utf8.count ?? 0)
+        if let imageData = image?.pngData() {
+            cost += imageData.count
+        }
+        return cost
+    }
     
     enum CodingKeys: String, CodingKey {
         case source, author, title, description, url, urlToImage, publishedAt, content
     }
 }
+
 
 struct Source: Codable {
     let id: String?
